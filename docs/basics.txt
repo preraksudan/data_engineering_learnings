@@ -1,0 +1,39 @@
+Getting data for data pipelines involves collecting information from diverse sources—databases, applications, files, and sensors—and moving it to a central repository like a data lake or warehouse. Methods vary based on required speed (latency) and volume, ranging from scheduled batch jobs to real-time streaming. 
+
+Different ways to get data for data pipelines:
+
+1. Data Ingestion Methods (How data is moved)
+Batch Processing: Collects data over a period (e.g., hourly, daily, monthly) and processes it in a single, large batch. Suitable for historical data, payroll, or reporting.
+Streaming/Real-Time Ingestion: Captures data as it is generated, offering low-latency, real-time insights (e.g., IoT data, financial transactions).
+Change Data Capture (CDC): A specialized streaming method that identifies and captures only data that has changed (inserts, updates, deletes) in source databases, reducing the load on systems.
+Micro-batching: A hybrid approach that splits data into very small, frequent batches (every few seconds), balancing the speed of streaming with the reliability of batch processing. 
+
+2. Data Sources (Where data comes from)
+Databases: Relational (MySQL, PostgreSQL, Oracle) and NoSQL (MongoDB, Cassandra).
+API-based Sources: Third-party services, social media, and SaaS applications (e.g., Salesforce, HubSpot).
+Files and Object Storage: CSV, JSON, XML, or Parquet files stored in cloud storage (e.g., Amazon S3, Azure Blob Storage).
+System and Application Logs: Data collected from web servers, applications, and system logs.
+IoT/Edge Devices: Sensor data from manufacturing, smart city devices, or vehicles.
+Web Scraping: Extracting structured data directly from websites. 
+
+3. Data Acquisition Techniques (How data is accessed)
+Log-based extraction: Reading transaction logs (similar to CDC).
+Full extract: Pulling all data at once, useful for small datasets.
+Incremental extraction: Using timestamps or version numbers to fetch only new data.
+API Polling/Webhooks: Periodically asking APIs for new data or receiving notifications when data changes. 
+
+4. Approaches to Building Data Pipelines
+Manual Coding (DIY): Developers write scripts using Python, SQL, or specialized libraries. Offers high control but requires significant maintenance.
+Managed Ingestion Tools/SaaS: Using platforms like Fivetran, Airbyte, Stitch, or Matillion, which offer pre-built connectors to simplify ingestion, often within minutes.
+Cloud-Native Services: Utilizing cloud provider tools like AWS Glue, Amazon Kinesis, Google Cloud Dataflow, or Azure Data Factory. 
+
+5. Data Types
+Structured: Data organized in tables (SQL Databases, spreadsheets).
+Semi-structured: Data with tags or keys (JSON, XML).
+Unstructured: Data without a predefined format (text files, images, videos). 
+
+Summary of Best Practices
+Use ELT over ETL: Modern pipelines often use Extract, Load, Transform (ELT), which loads raw data into a cloud data warehouse (e.g., Snowflake, BigQuery) first, then transforms it, enabling faster access and better flexibility.
+Automate: As data complexity grows, automate ingestion to save time and reduce errors.
+Ensure Idempotence: Design pipelines to handle failures without duplicating data.
+Monitor: Implement data observability to detect schema changes and data quality issues.
